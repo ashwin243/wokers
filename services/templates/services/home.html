@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HomeFix</title>
+<style>
+  /* Reset some default styles */
+  body, h1, h2, h3, p, ul, li, button, a {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  body {
+    background-color: #204238;
+    color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #204238;
+    border-radius: 12px;
+    padding: 30px 20px 50px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 14px;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  .headline {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .headline .highlight {
+    color: #f5e602;
+  }
+  .subtext {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  ul.features {
+    list-style: none;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  ul.features li {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 6px;
+    padding-left: 24px;
+    position: relative;
+  }
+  ul.features li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #eaf4e6;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+  }
+  button.get-started {
+    background-color: transparent;
+    color: #647464;
+    border: 1px solid #647464;
+    border-radius: 4px;
+    padding: 8px 18px;
+    cursor: not-allowed;
+    font-size: 13px;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  button.get-started:enabled {
+    cursor: pointer;
+    color: #204238;
+    background-color: #f5e602;
+    border-color: #f5e602;
+  }
+  button.get-started:enabled:hover {
+    background-color: #d6cc00;
+    border-color: #d6cc00;
+  }
+  .worker-link {
+    margin-top: 90px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+  }
+  .worker-link a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .worker-link a:hover {
+    color: #f5e602;
+  }
+  @media (max-width: 460px) {
+    .container {
+      max-width: 90%;
+      padding: 25px 15px 40px 15px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="HomeFix main content">
+    <div class="contact-text" aria-hidden="true">Contact</div>
+    <div class="logo" aria-label="HomeFix logo and name">HomeFix</div>
+    <h1 class="headline">
+      Find <span class="highlight">Trusted</span><br />
+      <span class="highlight">Workers</span> for Your<br />
+      Home
+    </h1>
+    <p class="subtext">
+      Quickly connect with skilled proffessionals<br />
+      for any home maintenance or repair job.
+    </p>
+    <ul class="features" aria-label="Features list">
+      <li>Vetted and reliable workers</li>
+      <li>Easy booking process</li>
+      <li>Satisfaction guaranteed</li>
+    </ul>
+    
+
+  <a href="{% url 'index' %}" class="get-started" aria-disabled="true">
+    <button>Get Started</button>
+</a>
+
+    <div class="worker-link">
+      <a href="#" tabindex="0" aria-label="Are you a Worker link">Are you a Worker</a>
+      
+    </div>
+  </div>
+</body>
+</html>
+

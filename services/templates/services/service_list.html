@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workers for {{ service.name }} - HomeFix</title>
+  <style>
+    /* Reset some default browser styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6ebd8; /* Main background from home page */
+      color: #153840;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header styles from home page */
+    header {
+      background-color: #1a4446;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      user-select: none;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: #80b3b6;
+      outline: none;
+    }
+
+    /* Main content container */
+    main {
+      padding: 3rem 1rem;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 700px;
+      background-color: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.7rem;
+      color: #153840;
+    }
+
+    .worker-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .worker-list li {
+      padding: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      transition: background-color 0.3s ease;
+    }
+
+    .worker-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .worker-list li:hover {
+        background-color: #f7f7f7;
+    }
+
+    a.worker-link {
+      text-decoration: none;
+      color: #337b89; /* Electrical blue for links */
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: block;
+    }
+
+    a.worker-link:hover {
+      text-decoration: underline;
+    }
+    
+    .empty-list-message {
+        text-align: center;
+        padding: 2rem;
+        color: #555;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #1a4446;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      color: #337b89;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 720px) {
+      header {
+        justify-content: center;
+      }
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      main {
+        padding: 2rem 1rem;
+      }
+      .content-wrapper {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="{% url 'index' %}" class="logo">HomeFix</a>
+    <nav aria-label="Primary Navigation">
+      <ul>
+        <li><a href="{% url 'index' %}" tabindex="0">Home</a></li>
+        <li><a href="#" tabindex="0">Services</a></li>
+        <li><a href="#" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content-wrapper">
+      <h1>Workers for {{ service.name }}</h1>
+
+      <ul class="worker-list">
+        {% for worker in workers %}
+        <li>
+          <a href="{% url 'worker_detail' worker.id %}" class="worker-link">{{ worker.name }}</a>
+        </li>
+        {% empty %}
+        <li class="empty-list-message">No workers available for this service.</li>
+        {% endfor %}
+      </ul>
+
+      <a href="{% url 'index' %}" class="back-link">← Back to Services</a>
+    </div>
+  </main>
+</body>
+</html>

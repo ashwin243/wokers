@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Worker - HomeFix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Reset some default browser styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e6ebd8; /* Main background from home page */
+        color: #153840;
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header styles from home page */
+      header {
+        background-color: #1a4446;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      header .logo {
+        font-weight: bold;
+        font-size: 1.2rem;
+        user-select: none;
+        color: white;
+        text-decoration: none;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover,
+      nav ul li a:focus {
+        color: #80b3b6;
+        outline: none;
+      }
+      
+      /* Main content container */
+      main {
+        padding: 3rem 1rem;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 550px;
+        background-color: #fff;
+        padding: 2rem 2.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.7rem;
+        color: #153840;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      form p {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      label {
+        font-weight: bold;
+        color: #153840;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: Arial, sans-serif;
+        color: #153840;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #557ea4;
+        box-shadow: 0 0 0 2px rgba(85, 126, 164, 0.2);
+      }
+
+      button[type="submit"] {
+        background-color: #1a4446;
+        color: white;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #2c6e5a; /* A slightly lighter shade */
+      }
+      
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        text-decoration: none;
+        color: #1a4446;
+        font-weight: bold;
+      }
+
+      .back-link:hover {
+        color: #337b89;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 720px) {
+        header {
+          justify-content: center;
+        }
+        nav ul {
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+          margin-top: 0.5rem;
+        }
+        main {
+          padding: 2rem 1rem;
+        }
+        .form-container {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <a href="{% url 'index' %}" class="logo">HomeFix</a>
+    <nav aria-label="Primary Navigation">
+      <ul>
+        <li><a href="{% url 'index' %}" tabindex="0">Home</a></li>
+        <li><a href="#" tabindex="0">Services</a></li>
+        <li><a href="#" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-container">
+        <h1>Book a Service</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Booking</button>
+        </form>
+        <a href="{% url 'index' %}" class="back-link">← Cancel</a>
+    </div>
+  </main>
+</body>
+</html>
