@@ -1,0 +1,37 @@
+<!-- templates/bookings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bookings</title>
+</head>
+<body>
+    <h1>Booking List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Address</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.user.username }}</td>
+                <td>{{ booking.service.name }}</td>
+                <td>{{ booking.date }}</td>
+                <td>{{ booking.time }}</td>
+                <td>{{ booking.address }}</td>
+                <td>{{ booking.phone }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No bookings found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
